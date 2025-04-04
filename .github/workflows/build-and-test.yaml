@@ -6,7 +6,7 @@ jobs:
     # This should be ubuntu-latest, but as of 2023-10-06ish, it has problems
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v3
         with:
@@ -25,12 +25,19 @@ jobs:
 
       - run: make extract
 
+      #- uses: bhowell2/github-substring-action@1.0.2
+      #  id: sha
+      #  with:
+      #    value: ${{ github.sha }}
+      #    length_from_start: 7
+
+      #- run: make release -j9 LIBAVJS_VERSION_SUFFIX=-${{ steps.sha.outputs.substring }}
+
       - run: make
       - run: make build-autoedit
       # - run: npm test
 
-      # Upload the build artifacts
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts
-          path: build/* # Adjust the path to match your build output
+          name: build
+          path: libav.js-*.zip
