@@ -1,4 +1,5 @@
 # libav.js
+.
 
 This is a compilation of the libraries associated with handling audio and video
 in FFmpeg—libavformat, libavcodec, libavfilter, libavutil and libswresample—for
